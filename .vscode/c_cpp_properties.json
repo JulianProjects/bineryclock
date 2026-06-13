@@ -1,0 +1,40 @@
+//
+// !!! WARNING !!! AUTO-GENERATED FILE!
+// PLEASE DO NOT MODIFY IT AND USE "platformio.ini":
+// https://docs.platformio.org/page/projectconf/section_env_build.html#build-flags
+//
+{
+    "configurations": [
+        {
+            "name": "PlatformIO",
+            "includePath": [
+                "C:/Users/trash/Documents/htwk/fs3/snp/platformio_rolex_ice/Rolex Ice/include",
+                "C:/Users/trash/Documents/htwk/fs3/snp/platformio_rolex_ice/Rolex Ice/src",
+                ""
+            ],
+            "browse": {
+                "limitSymbolsToIncludedHeaders": true,
+                "path": [
+                    "C:/Users/trash/Documents/htwk/fs3/snp/platformio_rolex_ice/Rolex Ice/include",
+                    "C:/Users/trash/Documents/htwk/fs3/snp/platformio_rolex_ice/Rolex Ice/src",
+                    ""
+                ]
+            },
+            "defines": [
+                "F_CPU=1000000L",
+                "PLATFORMIO=60119",
+                "ARDUINO_AVR_ATmega48",
+                "__AVR_ATmega48__",
+                ""
+            ],
+            "cStandard": "gnu11",
+            "cppStandard": "gnu++11",
+            "compilerPath": "C:/Users/trash/.platformio/packages/toolchain-atmelavr/bin/avr-gcc.exe",
+            "compilerArgs": [
+                "-mmcu=atmega48",
+                ""
+            ]
+        }
+    ],
+    "version": 4
+}
