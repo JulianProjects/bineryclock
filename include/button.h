@@ -1,12 +1,8 @@
-// Copyright [Year] [Your Name]
-// Distributed under the BSD 3-Clause License.
-// See LICENSE file for details.
-//
 // Button handling module for AVR microcontroller.
 // Provides functions to detect button presses with debouncing.
 
-#ifndef ROLEX_ICE_INCLUDE_BUTTON_H_
-#define ROLEX_ICE_INCLUDE_BUTTON_H_
+#ifndef BINARYCLOCK_INCLUDE_BUTTON_H_
+#define BINARYCLOCK_INCLUDE_BUTTON_H_
 
 #include <stdbool.h>
 #include <stdint.h>
@@ -36,4 +32,4 @@ bool Entprellt(void);
 // Returns the ID of the pressed button (1, 2, 3, or 4), or 1 if none pressed.
 int ButtonPressed(void);
 
-#endif  // ROLEX_ICE_INCLUDE_BUTTON_H_
+#endif  // BINARYCLOCK_INCLUDE_BUTTON_H_

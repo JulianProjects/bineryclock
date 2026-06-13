@@ -1,8 +1,4 @@
-// Copyright [Year] [Your Name]
-// Distributed under the BSD 3-Clause License.
-// See LICENSE file for details.
-//
-// Sleep mode implementation for Rolex Ice watch.
+// Sleep mode implementation for binary clock.
 // Manages low-power sleep modes triggered by pin change interrupt on PD1.
 
 #include <avr/interrupt.h>

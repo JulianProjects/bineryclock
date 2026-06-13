@@ -1,8 +1,4 @@
-// Copyright [Year] [Your Name]
-// Distributed under the BSD 3-Clause License.
-// See LICENSE file for details.
-//
-// PWM implementation for brightness control on Rolex Ice watch.
+// PWM implementation for brightness control on binary clock.
 // Controls LED brightness using Timer 1 in PWM mode on pin PB1 (OC1A).
 
 #include <avr/io.h>

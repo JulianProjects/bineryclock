@@ -1,9 +1,5 @@
-// Copyright [Year] [Your Name]
-// Distributed under the BSD 3-Clause License.
-// See LICENSE file for details.
-//
 // Button handling implementation for AVR microcontroller.
-// Implements debounced button input detection for Rolex Ice watch.
+// Implements debounced button input detection for binary clock.
 
 #include <avr/io.h>
 #include <stdbool.h>

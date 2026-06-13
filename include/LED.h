@@ -1,12 +1,8 @@
-// Copyright [Year] [Your Name]
-// Distributed under the BSD 3-Clause License.
-// See LICENSE file for details.
-//
 // LED display module for AVR microcontroller.
 // Controls LED output for time display on pins B, C, and D.
 
-#ifndef ROLEX_ICE_INCLUDE_LED_H_
-#define ROLEX_ICE_INCLUDE_LED_H_
+#ifndef BINARYCLOCK_INCLUDE_LED_H_
+#define BINARYCLOCK_INCLUDE_LED_H_
 
 #include <stdint.h>
 
@@ -33,4 +29,4 @@ void DisplayMinutesAndHours(void);
 // Displays seconds on LED pins.
 void DisplaySeconds(void);
 
-#endif  // ROLEX_ICE_INCLUDE_LED_H_
+#endif  // BINARYCLOCK_INCLUDE_LED_H_

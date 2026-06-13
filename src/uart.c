@@ -1,8 +1,4 @@
-// Copyright [Year] [Your Name]
-// Distributed under the BSD 3-Clause License.
-// See LICENSE file for details.
-//
-// UART serial communication implementation for AVR microcontroller.
+// UART serial communication implementation for binary clock.
 // Provides serial input/output at 4800 baud for debugging and communication.
 
 #include <avr/io.h>

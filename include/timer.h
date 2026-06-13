@@ -1,12 +1,8 @@
-// Copyright [Year] [Your Name]
-// Distributed under the BSD 3-Clause License.
-// See LICENSE file for details.
-//
 // Timer module for AVR microcontroller.
 // Provides timing functionality and maintains current time state.
 
-#ifndef ROLEX_ICE_INCLUDE_TIMER_H_
-#define ROLEX_ICE_INCLUDE_TIMER_H_
+#ifndef BINARYCLOCK_INCLUDE_TIMER_H_
+#define BINARYCLOCK_INCLUDE_TIMER_H_
 
 #include <stdbool.h>
 #include <stdint.h>
@@ -32,4 +28,4 @@ void InitTimer(void);
 // Updates current time based on timer state.
 void CurrentTime(void);
 
-#endif  // ROLEX_ICE_INCLUDE_TIMER_H_
+#endif  // BINARYCLOCK_INCLUDE_TIMER_H_

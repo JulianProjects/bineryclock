@@ -1,7 +1,3 @@
-// Copyright [Year] [Your Name]
-// Distributed under the BSD 3-Clause License.
-// See LICENSE file for details.
-//
 // Mode handling module for Rolex Ice watch.
 // Manages different operation modes and transitions.
 
@@ -28,4 +24,4 @@ void HandleMode3(void);
 // Mode 4 handler.
 void HandleMode4(void);
 
-#endif  // ROLEX_ICE_INCLUDE_MODES_H_
+#endif  // BINARYCLOCK_INCLUDE_MODES_H_

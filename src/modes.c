@@ -1,8 +1,4 @@
-// Copyright [Year] [Your Name]
-// Distributed under the BSD 3-Clause License.
-// See LICENSE file for details.
-//
-// Mode handling implementation for Rolex Ice watch.
+// Mode handling implementation for binary clock.
 // Implements different operation modes and user interactions.
 
 #include <avr/io.h>

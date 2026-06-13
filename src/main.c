@@ -1,8 +1,4 @@
-// Copyright [Year] [Your Name]
-// Distributed under the BSD 3-Clause License.
-// See LICENSE file for details.
-//
-// Main entry point for Rolex Ice watch firmware.
+// Main entry point for binary clock firmware.
 // Initializes hardware modules and manages main event loop.
 
 #include <avr/interrupt.h>

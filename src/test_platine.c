@@ -1,8 +1,4 @@
-// Copyright [Year] [Your Name]
-// Distributed under the BSD 3-Clause License.
-// See LICENSE file for details.
-//
-// Board test module implementation for Rolex Ice watch.
+// Board test module implementation for binary clock.
 // Tests all LED outputs by sequentially lighting each LED for 500ms.
 
 #include <avr/io.h>

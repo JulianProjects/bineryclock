@@ -1,8 +1,4 @@
-// Copyright [Year] [Your Name]
-// Distributed under the BSD 3-Clause License.
-// See LICENSE file for details.
-//
-// LED display implementation for AVR microcontroller.
+// LED display implementation for binary clock.
 // Controls LED output on ports B, C, and D for time display.
 
 #include <avr/io.h>

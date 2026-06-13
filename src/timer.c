@@ -1,8 +1,4 @@
-// Copyright [Year] [Your Name]
-// Distributed under the BSD 3-Clause License.
-// See LICENSE file for details.
-//
-// Timer module implementation for AVR microcontroller.
+// Timer module implementation for binary clock.
 // Manages TIMER2 for accurate timekeeping with external crystal oscillator.
 
 #include <avr/interrupt.h>

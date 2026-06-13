@@ -1,12 +1,8 @@
-// Copyright [Year] [Your Name]
-// Distributed under the BSD 3-Clause License.
-// See LICENSE file for details.
-//
 // UART serial communication module for AVR microcontroller.
 // Provides serial input/output functions for debugging and communication.
 
-#ifndef ROLEX_ICE_INCLUDE_UART_H_
-#define ROLEX_ICE_INCLUDE_UART_H_
+#ifndef BINARYCLOCK_INCLUDE_UART_H_
+#define BINARYCLOCK_INCLUDE_UART_H_
 
 #include <stdint.h>
 
@@ -36,4 +32,4 @@ void UartPuts(char* s);
 // Returns: Received character.
 char UartGetchar(void);
 
-#endif  // ROLEX_ICE_INCLUDE_UART_H_
+#endif  // BINARYCLOCK_INCLUDE_UART_H_
