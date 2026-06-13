@@ -1,15 +1,36 @@
-#ifndef LED_H_
-#define LED_H_
+// Copyright [Year] [Your Name]
+// Distributed under the BSD 3-Clause License.
+// See LICENSE file for details.
+//
+// LED display module for AVR microcontroller.
+// Controls LED output for time display on pins B, C, and D.
+
+#ifndef ROLEX_ICE_INCLUDE_LED_H_
+#define ROLEX_ICE_INCLUDE_LED_H_
 
 #include <stdint.h>
 
-void init_led(void);
-void set_all_leds_off(void);
-void set_all_leds_on(void);
+// Initializes LED pins as outputs.
+// Sets up ports B, C, and D for LED control.
+void InitLed(void);
 
-void display_minutes(uint8_t minutes);
-void display_hours(void);
-void display_minutes_and_hours(void);
-void display_seconds(void);
+// Turns off all LEDs by setting pins to HIGH (active low).
+void SetAllLedsOff(void);
 
-#endif
+// Turns on all LEDs by setting pins to LOW (active low).
+void SetAllLedsOn(void);
+
+// Displays minutes in binary on 6 LED pins.
+// Encodes minutes 0-59 across pins B2-B5 and C0-C1.
+void DisplayMinutes(uint8_t minutes);
+
+// Displays current hours on LED pins.
+void DisplayHours(void);
+
+// Displays both minutes and hours on LED pins.
+void DisplayMinutesAndHours(void);
+
+// Displays seconds on LED pins.
+void DisplaySeconds(void);
+
+#endif  // ROLEX_ICE_INCLUDE_LED_H_

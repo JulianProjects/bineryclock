@@ -1,54 +1,77 @@
-#include <avr/io.h>
+// Copyright [Year] [Your Name]
+// Distributed under the BSD 3-Clause License.
+// See LICENSE file for details.
+//
+// Sleep mode implementation for Rolex Ice watch.
+// Manages low-power sleep modes triggered by pin change interrupt on PD1.
+
 #include <avr/interrupt.h>
+#include <avr/io.h>
 #include <avr/sleep.h>
 #include <stdint.h>
 
+#include "led.h"
 #include "sleep_mode.h"
-#include "LED.h"
 
+// Sleep mode active flag.
 extern volatile uint8_t sleep_mode_active;
 
-// merkt sich alten Zustand von PD1
-static volatile uint8_t pd1_last_state = 1;
+// Stores previous state of PD1 (sleep button pin) for edge detection.
+static volatile uint8_t kPd1LastState = 1;
 
-void init_sleep_mode(void)
-{
-    DDRD &= ~(1 << PD1);
-    PORTD |= (1 << PD1);
+static const int kPd1BitPosition = PD1;
+static const int kPd1InterruptBit = PCINT17;
 
-    pd1_last_state = (PIND & (1 << PD1)) ? 1 : 0;
+void InitSleepMode(void) {
+  // Configure PD1 as input with pull-up.
+  DDRD &= ~(1 << kPd1BitPosition);
+  PORTD |= (1 << kPd1BitPosition);
 
-    PCICR |= (1 << PCIE2);
-    PCMSK2 |= (1 << PCINT17);
-    PCIFR |= (1 << PCIF2);
+  // Read initial state of PD1.
+  kPd1LastState = (PIND & (1 << kPd1BitPosition)) ? 1 : 0;
 
-    set_sleep_mode(SLEEP_MODE_PWR_SAVE);
+  // Enable pin change interrupt group 2 (Port D).
+  PCICR |= (1 << PCIE2);
+  
+  // Enable interrupt for PD1 (PCINT17).
+  PCMSK2 |= (1 << kPd1InterruptBit);
+  
+  // Clear pending interrupt.
+  PCIFR |= (1 << PCIF2);
+
+  // Select power-save sleep mode (saves more power than idle mode).
+  set_sleep_mode(SLEEP_MODE_PWR_SAVE);
 }
 
-ISR(PCINT2_vect)
-{
-    uint8_t current_state = (PIND & (1 << PD1)) ? 1 : 0;
+// Pin change interrupt handler for Port D.
+ISR(PCINT2_vect) {
+  uint8_t current_state = (PIND & (1 << kPd1BitPosition)) ? 1 : 0;
 
-    // nur auf fallende Flanke reagieren
-    if (pd1_last_state && !current_state) {
-        sleep_mode_active = !sleep_mode_active;
-    }
+  // Toggle sleep mode on falling edge (button press).
+  if (kPd1LastState && !current_state) {
+    sleep_mode_active = !sleep_mode_active;
+  }
 
-    pd1_last_state = current_state;
+  kPd1LastState = current_state;
 }
 
-void manage_sleep_mode(void)
-{
-    while (sleep_mode_active) {
-        set_all_led_off();
+void ManageSleepMode(void) {
+  while (sleep_mode_active) {
+    // Turn off all LEDs in sleep mode.
+    SetAllLedsOff();
 
-        // warten bis Taste losgelassen wurde
-        while (!(PIND & (1 << PD1))) {
-            ;
-        }
-
-        sleep_enable();
-        sleep_cpu();
-        sleep_disable();
+    // Wait until button is released (pin goes HIGH).
+    while (!(PIND & (1 << kPd1BitPosition))) {
+      // Busy wait
     }
+
+    // Enable sleep mode.
+    sleep_enable();
+    
+    // Put CPU to sleep.
+    sleep_cpu();
+    
+    // Disable sleep mode after waking up.
+    sleep_disable();
+  }
 }

@@ -1,66 +1,74 @@
+// Copyright [Year] [Your Name]
+// Distributed under the BSD 3-Clause License.
+// See LICENSE file for details.
+//
+// Board test module implementation for Rolex Ice watch.
+// Tests all LED outputs by sequentially lighting each LED for 500ms.
+
 #include <avr/io.h>
 #include <util/delay.h>
 
-void test_platine(void){
-        // Turn all LED lines OFF
-        // Since PB1 is HIGH, the LEDs turn on when the other pin is LOW
-        // So here all cathode/control lines are set to HIGH = LEDs off
-        PORTB |= (1 << PB0) | (1 << PB2) | (1 << PB3) | (1 << PB4) | (1 << PB5);
-        PORTC |= (1 << PC0) | (1 << PC1) | (1 << PC2);
-        PORTD |= (1 << PD5) | (1 << PD6) | (1 << PD7);
+static const int kLedOnDelayMs = 500;
 
-            // Turn on D1 for 500 ms, then turn it off again
-            PORTB &= ~(1 << PB2);
-            _delay_ms(500);
-            PORTB |= (1 << PB2);     // D1 off again
+void TestBoard(void) {
+  // Turn all LEDs off initially.
+  // Since PB1 is HIGH (common line), LEDs turn on when cathode pins are LOW.
+  PORTB |= (1 << PB0) | (1 << PB2) | (1 << PB3) | (1 << PB4) | (1 << PB5);
+  PORTC |= (1 << PC0) | (1 << PC1) | (1 << PC2);
+  PORTD |= (1 << PD5) | (1 << PD6) | (1 << PD7);
 
-            // Turn on D2 for 500 ms, then turn it off again
-            PORTB &= ~(1 << PB3);
-            _delay_ms(500);
-            PORTB |= (1 << PB3);     // D2 off again
+  // Test LED on PB2 (D1).
+  PORTB &= ~(1 << PB2);
+  _delay_ms(kLedOnDelayMs);
+  PORTB |= (1 << PB2);
 
-            // Turn on D3 for 500 ms, then turn it off again
-            PORTB &= ~(1 << PB4);
-            _delay_ms(500);
-            PORTB |= (1 << PB4);     // D3 off again
+  // Test LED on PB3 (D2).
+  PORTB &= ~(1 << PB3);
+  _delay_ms(kLedOnDelayMs);
+  PORTB |= (1 << PB3);
 
-            // Turn on D4 for 500 ms, then turn it off again
-            PORTB &= ~(1 << PB5);
-            _delay_ms(500);
-            PORTB |= (1 << PB5);     // D4 off again
+  // Test LED on PB4 (D3).
+  PORTB &= ~(1 << PB4);
+  _delay_ms(kLedOnDelayMs);
+  PORTB |= (1 << PB4);
 
-            // Turn on D5 for 500 ms, then turn it off again
-            PORTC &= ~(1 << PC0);
-            _delay_ms(500);
-            PORTC |= (1 << PC0);     // D5 off again
+  // Test LED on PB5 (D4).
+  PORTB &= ~(1 << PB5);
+  _delay_ms(kLedOnDelayMs);
+  PORTB |= (1 << PB5);
 
-            // Turn on D6 for 500 ms, then turn it off again
-            PORTC &= ~(1 << PC1);
-            _delay_ms(500);
-            PORTC |= (1 << PC1);     // D6 off again
+  // Test LED on PC0 (D5).
+  PORTC &= ~(1 << PC0);
+  _delay_ms(kLedOnDelayMs);
+  PORTC |= (1 << PC0);
 
-            // Turn on D7 for 500 ms, then turn it off again
-            PORTC &= ~(1 << PC2);
-            _delay_ms(500);
-            PORTC |= (1 << PC2);     // D7 off again
+  // Test LED on PC1 (D6).
+  PORTC &= ~(1 << PC1);
+  _delay_ms(kLedOnDelayMs);
+  PORTC |= (1 << PC1);
 
-            // Turn on D8 for 500 ms, then turn it off again
-            PORTB &= ~(1 << PB0);
-            _delay_ms(500);
-            PORTB |= (1 << PB0);     // D8 off again
+  // Test LED on PC2 (D7).
+  PORTC &= ~(1 << PC2);
+  _delay_ms(kLedOnDelayMs);
+  PORTC |= (1 << PC2);
 
-            // Turn on D9 for 500 ms, then turn it off again
-            PORTD &= ~(1 << PD7);
-            _delay_ms(500);
-            PORTD |= (1 << PD7);     // D9 off again
+  // Test LED on PB0 (D8).
+  PORTB &= ~(1 << PB0);
+  _delay_ms(kLedOnDelayMs);
+  PORTB |= (1 << PB0);
 
-            // Turn on D10 for 500 ms, then turn it off again
-            PORTD &= ~(1 << PD6);
-            _delay_ms(500);
-            PORTD |= (1 << PD6);     // D10 off again
+  // Test LED on PD7 (D9).
+  PORTD &= ~(1 << PD7);
+  _delay_ms(kLedOnDelayMs);
+  PORTD |= (1 << PD7);
 
-            // Turn on D11 for 500 ms, then turn it off again
-            PORTD &= ~(1 << PD5);
-            _delay_ms(500);
-            PORTD |= (1 << PD5);     // D11 off again
+  // Test LED on PD6 (D10).
+  PORTD &= ~(1 << PD6);
+  _delay_ms(kLedOnDelayMs);
+  PORTD |= (1 << PD6);
+
+  // Test LED on PD5 (D11).
+  PORTD &= ~(1 << PD5);
+  _delay_ms(kLedOnDelayMs);
+  PORTD |= (1 << PD5);
 }

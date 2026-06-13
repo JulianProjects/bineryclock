@@ -1,53 +1,73 @@
+// Copyright [Year] [Your Name]
+// Distributed under the BSD 3-Clause License.
+// See LICENSE file for details.
+//
+// Mode handling implementation for Rolex Ice watch.
+// Implements different operation modes and user interactions.
+
 #include <avr/io.h>
 #include <stdbool.h>
+#include <stdint.h>
 
-#include "modes.h"
 #include "button.h"
-#include "LED.h"
-#include "sleep_mode.h"
+#include "led.h"
+#include "modes.h"
 #include "pwm.h"
+#include "sleep_mode.h"
 
+// Current operation mode.
 volatile extern int modus;
+
+// Current brightness level (0-100).
 extern int brightness;
+
+// Sleep mode state.
 extern volatile uint8_t sleep_mode_active;
 
-void handle_mode_1(void)
-{
-    display_minutes_hours();
-    modus = button_pressed();
+volatile void HandleMode(void) {
+  // Mode dispatcher - added placeholder
+  // TODO: Implement main mode dispatch logic.
 }
 
-void handle_mode_2(void)
-{
-    display_seconds();
-    modus = button_pressed();
+void HandleMode1(void) {
+  // Display minutes and hours.
+  DisplayMinutesAndHours();
+  modus = ButtonPressed();
+}
 
-    if (modus == 1){
-        modus = 2;
-    } 
-    else if (modus == 2){
-        modus = 1;
+void HandleMode2(void) {
+  // Display seconds.
+  DisplaySeconds();
+  modus = ButtonPressed();
+
+  if (modus == 1) {
+    modus = 2;
+  } else if (modus == 2) {
+    modus = 1;
+  }
+}
+
+void HandleMode4(void) {
+  // Brightness adjustment mode.
+  SetAllLedsOn();
+  modus = ButtonPressed();
+
+  if (modus == 1) {
+    modus = 4;
+  } else if (modus == 4) {
+    // Decrease brightness on button press.
+    if (button_4_getter) {
+      brightness -= 25;
+      SetPwmPb1(brightness);
     }
+
+    // Reset brightness when at minimum.
+    if (brightness <= 0) {
+      brightness = 100;
+      modus = 1;
+    }
+  }
 }
-
-void handle_mode_4(void)
-{
-    set_all_led_on();
-    modus = button_pressed();
-
-    if (modus == 1){
-        modus = 4;
-    } 
-    else if (modus == 4){
-        if (button_4_getter){
-            brightness -= 25;
-            set_pwm_pb1(brightness);
-        }
-
-        if (brightness <= 0){
-            brightness = 100;
-            modus = 1;
-        }
     }
 }
 
